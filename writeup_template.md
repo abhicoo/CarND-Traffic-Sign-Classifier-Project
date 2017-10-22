@@ -61,7 +61,7 @@ the CNN can learn better representation(features) from data.
 ####1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
 
 We will convert image to grayscale since color has very little thing to do with classifying the traffic signs. The symbols structure in traffic signs is important feature.
-We will also normalize the image so that we are not passing very high values of classifier. It helps model in learning parameters easily.
+We will also normalize the image so that we are not passing very high values to classifier. It helps model in learning parameters easily.
 We will also apply histogram equalization technique so that we have better contrast in our images.
 
 ![alt text][image3]
@@ -109,7 +109,7 @@ Cross Entropy Mesaures how far our predicted probability distribution is from ac
 
 The batch_size is set to 128 which is how much data we will process in each iteration to compute gradient and adjust or tune weights.
 The epochs is set to 15 which was calculated through trial and repeat method at point after which accuracy stops to improve.
-The learning rate is set to 0.001 which was calculated through trial and repeat. We accept the learning_rate which redues the loss most.
+The learning rate is set to 0.001 which was calculated through trial and repeat. We accept the learning_rate which reduces the loss most.
 
 ![alt text][image5]
 Above is image showing how cost changed over every epoch generated from tensorboard
@@ -123,19 +123,19 @@ My final model results were:
 
 If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen?
-	I started with the same architecture as that of LeNet-Lab class. I choose this as starting point because it gave more that 95% accuracy on the dataset it was trained on. 
+	*I started with the same architecture as that of LeNet-Lab class. I choose this as starting point because it gave more that 95% accuracy on the dataset it was trained on. 
 * What were some problems with the initial architecture?
-	When i used with the same model with Traffic Sign data set the accuracy was less that 90%. The model was not using some of the latest techinques which helps in better
+	*When i used the same model with Traffic Sign data set the accuracy was less that 90%. The model was not using some of the latest techinques which helps in better
 	learning(Batch Normalization) and better generalization(Dropout);
 * How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-	The thing which helped to improve the most most was doing better preprocessing. The historgram equalization really helped. 
+	*The thing which helped to improve the most most was doing better preprocessing. The historgram equalization really helped. 
 	I added batch normalization layer before the activation layers so that we have better learning as we are proving normalized data to each layer not only the input.
 	I also added dropout layers to help model not overfit on training data and perform better on validation and test data.
 
 * Which parameters were tuned? How were they adjusted and why?
-	Epochs, Batch Size, Learning rate, Keep Probability(Dropout) were tuned.
+	*Epochs, Batch Size, Learning rate, Keep Probability(Dropout) were tuned.
 	The mu and sigma was also adjusted for better weights initialization. The sigma was set to 0.01. The way i reached to this value is by computing initial cost and checking
-	that its value is near to -ln(1/n_classes). Initally the model should give equal probability for each class. This also helps us tell whether the model architecture was
+	that its value is near to -ln(1/n_classes). Initially the model should give equal probability for each class. This also helps us tell whether the model architecture was
 	implemented correctly.
 	The batch_size is set to 128 which is how much data we will process in each iteration to compute gradient and adjust or tune weights.
 	The epochs is set to 15 which was calculated through trial and repeat method at point after which accuracy stops to improve.
@@ -143,25 +143,23 @@ If an iterative approach was chosen:
 
 
 * What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
-	Adding Batch Normalization and Dropout Layer helped in better predictions.
+	*Adding Batch Normalization and Dropout Layer helped in better predictions.
 
 If a well known architecture was chosen:
 * What architecture was chosen?
-	I used basic version of LeNet model with some adjustments like Batch Normalization and Dropout.
+	*I used basic version of LeNet model with some adjustments like Batch Normalization and Dropout.
 * How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
-	The model is having for than 95% accuracy on all the datasets. Since the accuracy difference is not much and high the model has learnt and generalized well.
+	*The model is having for than 95% accuracy on all the datasets. Since the accuracy difference is not much and high the model has learnt and generalized well.
  
 
 ###Test a Model on New Images
 
 ####1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
-Here are five German traffic signs that I found on the web:
+Here are seven German traffic signs that I found on the web:
 
 ![alt text][image6] ![alt text][image7] ![alt text][image8] ![alt text][image9] 
 ![alt text][image10] ![alt text][image11] ![alt text][image13] 
-
-The first image might be difficult to classify because ...
 
 ####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
