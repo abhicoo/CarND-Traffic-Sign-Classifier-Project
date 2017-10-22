@@ -17,11 +17,15 @@ The goals / steps of this project are the following:
 [image2]: data_visualization.png "Data Visualization"
 [image3]: processed_data_visualization.png "Processed Data Visualization"
 [image4]: graph_run.png "Model Architecture"
-[image5]: ./examples/placeholder.png "Traffic Sign 2"
-[image6]: ./examples/placeholder.png "Traffic Sign 3"
-[image7]: ./examples/placeholder.png "Traffic Sign 4"
-[image8]: ./examples/placeholder.png "Traffic Sign 5"
-
+[image5]: cost.png "Cost"
+[image6]: ./my_images/1.png "Traffic Sign 1"
+[image7]: ./my_images/2.png "Traffic Sign 2"
+[image8]: ./my_images/3.png "Traffic Sign 3"
+[image9]: ./my_images/4.png "Traffic Sign 4"
+[image10]: ./my_images/5.png "Traffic Sign 5"
+[image11]: ./my_images/6.png "Traffic Sign 6"
+[image12]: ./my_images/7.png "Traffic Sign 7"
+[image13]: ./my_images/8.png "Traffic Sign 8"
 
 Here is a link to my [project code](https://github.com/abhicoo/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
 
@@ -100,9 +104,12 @@ The optimizer needs to optimize something.
 The thing which we are going to optimize is a loss function called Cross Entropy.
 Cross Entropy Mesaures how far our predicted probability distribution is from actual probability distribution.
 
-The batch_size is set to 128 which is how much data we will process in each iteration to compute gradient and adjust or weights.
-The epochs is set to 15 which was calculated through trial and repeat method as stop as point after which accuracy stops to improve.
+The batch_size is set to 128 which is how much data we will process in each iteration to compute gradient and adjust or tune weights.
+The epochs is set to 15 which was calculated through trial and repeat method at point after which accuracy stops to improve.
 The learning rate is set to 0.001 which was calculated through trial and repeat. We accept the learning_rate which redues the loss most.
+
+![alt text][image5]
+Above is image showing how cost changed over every epoch generated from tensorboard
 
 ####4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
@@ -113,15 +120,33 @@ My final model results were:
 
 If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen?
+	I started with the same architecture as that of LeNet-Lab class. I choose this as starting point because it gave more that 95% accuracy on the dataset it was trained on. 
 * What were some problems with the initial architecture?
+	When i used with the same model with Traffic Sign data set the accuracy was less that 90%. The model was not using some of the latest techinques with helps in better
+	learning(Batch Normalization) and better generalization(Dropout);
 * How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
+	The thing which helped to improve the most most was doing better preprocessing. The historgram equalization really helped. 
+	I added batch normalization layer before the activation layers so that we have better learning as we are proving normalized data to each layer not only the input.
+	I also added dropout layers to help model not overfit on training data and perform better on validation and test data.
+
 * Which parameters were tuned? How were they adjusted and why?
+	Epochs, Batch Size, Learning rate, Keep Probability(Dropout) were tuned.
+	The mu and sigma was also adjusted for better weights initialization. The sigma was set to 0.01. The way i reached to this value is by computing initial cost and checking
+	that its value is near to -ln(1/n_classes). Initally the model should give equal probability for each class. This also helps us tell whether the model architecture was
+	implemented correctly.
+	The batch_size is set to 128 which is how much data we will process in each iteration to compute gradient and adjust or tune weights.
+	The epochs is set to 15 which was calculated through trial and repeat method at point after which accuracy stops to improve.
+	The learning rate is set to 0.001 which was calculated through trial and repeat. We accept the learning_rate which redues the loss most.
+
+
 * What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
+	Adding Batch Normalization and Dropout Layer helped in better predictions.
 
 If a well known architecture was chosen:
 * What architecture was chosen?
-* Why did you believe it would be relevant to the traffic sign application?
+	I used basic version of LeNet model with some adjustments like Batch Normalization and Dropout.
 * How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
+	The model is having for than 95% accuracy on all the datasets. Since the accuracy difference is not much and high the model has learnt and generalized well.
  
 
 ###Test a Model on New Images
@@ -130,8 +155,8 @@ If a well known architecture was chosen:
 
 Here are five German traffic signs that I found on the web:
 
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
+![alt text][image6] ![alt text][image7] ![alt text][image8] ![alt text][image9] 
+![alt text][image10] ![alt text][image11] ![alt text][image12] ![alt text][image13] 
 
 The first image might be difficult to classify because ...
 
