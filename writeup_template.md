@@ -2,6 +2,7 @@
 
 **Build a Traffic Sign Recognition Project**
 
+
 The goals / steps of this project are the following:
 * Load the data set (see below for links to the project data set)
 * Explore, summarize and visualize the data set
@@ -123,17 +124,17 @@ My final model results were:
 
 If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen?
-	*I started with the same architecture as that of LeNet-Lab class. I choose this as starting point because it gave more that 95% accuracy on the dataset it was trained on. 
+	I started with the same architecture as that of LeNet-Lab class. I choose this as starting point because it gave more that 95% accuracy on the dataset it was trained on. 
 * What were some problems with the initial architecture?
-	*When i used the same model with Traffic Sign data set the accuracy was less that 90%. The model was not using some of the latest techinques which helps in better
+	When i used the same model with Traffic Sign data set the accuracy was less that 90%. The model was not using some of the latest techinques which helps in better
 	learning(Batch Normalization) and better generalization(Dropout);
 * How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-	*The thing which helped to improve the most most was doing better preprocessing. The historgram equalization really helped. 
+	The thing which helped to improve the most most was doing better preprocessing. The historgram equalization really helped. 
 	I added batch normalization layer before the activation layers so that we have better learning as we are proving normalized data to each layer not only the input.
 	I also added dropout layers to help model not overfit on training data and perform better on validation and test data.
 
 * Which parameters were tuned? How were they adjusted and why?
-	*Epochs, Batch Size, Learning rate, Keep Probability(Dropout) were tuned.
+	Epochs, Batch Size, Learning rate, Keep Probability(Dropout) were tuned.
 	The mu and sigma was also adjusted for better weights initialization. The sigma was set to 0.01. The way i reached to this value is by computing initial cost and checking
 	that its value is near to -ln(1/n_classes). Initially the model should give equal probability for each class. This also helps us tell whether the model architecture was
 	implemented correctly.
@@ -143,13 +144,13 @@ If an iterative approach was chosen:
 
 
 * What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
-	*Adding Batch Normalization and Dropout Layer helped in better predictions.
+	Adding Batch Normalization and Dropout Layer helped in better predictions.
 
 If a well known architecture was chosen:
 * What architecture was chosen?
-	*I used basic version of LeNet model with some adjustments like Batch Normalization and Dropout.
+	I used basic version of LeNet model with some adjustments like Batch Normalization and Dropout.
 * How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
-	*The model is having for than 95% accuracy on all the datasets. Since the accuracy difference is not much and high the model has learnt and generalized well.
+	The model is having for than 95% accuracy on all the datasets. Since the accuracy difference is not much and high the model has learnt and generalized well.
  
 
 ###Test a Model on New Images
