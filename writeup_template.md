@@ -18,14 +18,14 @@ The goals / steps of this project are the following:
 [image3]: processed_data_visualization.png "Processed Data Visualization"
 [image4]: graph_run.png "Model Architecture"
 [image5]: cost.png "Cost"
-[image6]: ./my_images/1.png "Traffic Sign 1"
-[image7]: ./my_images/2.png "Traffic Sign 2"
-[image8]: ./my_images/3.png "Traffic Sign 3"
-[image9]: ./my_images/4.png "Traffic Sign 4"
-[image10]: ./my_images/5.png "Traffic Sign 5"
-[image11]: ./my_images/6.png "Traffic Sign 6"
-[image12]: ./my_images/7.png "Traffic Sign 7"
-[image13]: ./my_images/8.png "Traffic Sign 8"
+[image6]: ./my_images/1.jpg "Traffic Sign 1"
+[image7]: ./my_images/2.jpg "Traffic Sign 2"
+[image8]: ./my_images/3.jpg "Traffic Sign 3"
+[image9]: ./my_images/4.jpg "Traffic Sign 4"
+[image10]: ./my_images/5.jpg "Traffic Sign 5"
+[image11]: ./my_images/6.jpg "Traffic Sign 6"
+[image12]: ./my_images/7.jpg "Traffic Sign 7"
+[image13]: ./my_images/8.jpg "Traffic Sign 8"
 
 Here is a link to my [project code](https://github.com/abhicoo/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
 
