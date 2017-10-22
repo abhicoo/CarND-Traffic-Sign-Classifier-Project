@@ -15,7 +15,7 @@ The goals / steps of this project are the following:
 
 [image1]: data_distribution.png "Data Distribution"
 [image2]: data_visualization.png "Data Visualization"
-[image3]: processed_data_visualization "Processed Data Visualization"
+[image3]: processed_data_visualization.png "Processed Data Visualization"
 [image4]: graph_run.png "Model Architecture"
 [image5]: ./examples/placeholder.png "Traffic Sign 2"
 [image6]: ./examples/placeholder.png "Traffic Sign 3"
