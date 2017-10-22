@@ -24,8 +24,10 @@ The goals / steps of this project are the following:
 [image9]: ./my_images/4.jpg "Traffic Sign 4"
 [image10]: ./my_images/5.jpg "Traffic Sign 5"
 [image11]: ./my_images/6.jpg "Traffic Sign 6"
-[image12]: ./my_images/7.jpg "Traffic Sign 7"
 [image13]: ./my_images/8.jpg "Traffic Sign 8"
+[image14]: probability_distribution_end_of_speed_limit_60.png "probability_distribution_end_of_speed_limit_60"
+[image15]: probability_distribution_elderly_crossing.png "probability_distribution_elderly_crossing"
+[image16]: feature_map.png "Traffic Sign 8"
 
 Here is a link to my [project code](https://github.com/abhicoo/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
 
@@ -116,14 +118,14 @@ Above is image showing how cost changed over every epoch generated from tensorbo
 
 My final model results were:
 * training set accuracy of 99.8%
-* validation set accuracy of 97.5%
-* test set accuracy of 96.3%
+* validation set accuracy of 98%
+* test set accuracy of 96.2%
 
 If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen?
 	I started with the same architecture as that of LeNet-Lab class. I choose this as starting point because it gave more that 95% accuracy on the dataset it was trained on. 
 * What were some problems with the initial architecture?
-	When i used with the same model with Traffic Sign data set the accuracy was less that 90%. The model was not using some of the latest techinques with helps in better
+	When i used with the same model with Traffic Sign data set the accuracy was less that 90%. The model was not using some of the latest techinques which helps in better
 	learning(Batch Normalization) and better generalization(Dropout);
 * How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
 	The thing which helped to improve the most most was doing better preprocessing. The historgram equalization really helped. 
@@ -157,7 +159,7 @@ If a well known architecture was chosen:
 Here are five German traffic signs that I found on the web:
 
 ![alt text][image6] ![alt text][image7] ![alt text][image8] ![alt text][image9] 
-![alt text][image10] ![alt text][image11] ![alt text][image12] ![alt text][image13] 
+![alt text][image10] ![alt text][image11] ![alt text][image13] 
 
 The first image might be difficult to classify because ...
 
@@ -167,33 +169,38 @@ Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
 | Slippery Road			| Slippery Road      							|
+| Speed limit(60km/h)    			| Speed limit(60km/h)										|
+| Road Work					| Road Work						|
+| Speed limit(70km/h)      		| Speed limit(70km/h)					 				|
+| Traffic Signals		| Traffic Signals     							|
+| End of Speed Limit (60km/h)		| End of Speed Limit (80km/h)    							|
+| Elderly Crossing		| Speed limit(70km/h)    							|
 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+The model was able to correctly guess 4 of the 6 traffic signs, which gives an accuracy of 67%. 
+The network actually gave 100% accuracy on the traffic signs which are present in our training dataset.
+The End of Speed Limit (60km/h) is not present in our dataset at all but the network came very near to a class present in training data set End of Speed Limit (80km/h).
+The Elderly Crossing was misclassifed totally.
+Lets check the probabilty of top 5 classes for misclassifed images.
 
 ####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
-
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
-
-| Probability         	|     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+![alt text][image11]
+![alt text][image14]
 
 
-For the second image ... 
+The End of speed limit(60km/h) is classified as End of speed limit(80km/h). Our training data didnot has End of speed limit(60km/h) but the network was able to recognize it as end of speed limit sign because of the stripe over the number which it has seen in training was said to be a end of speed limit sign. The network also gave some probability to speed limit 30km/h as there is a number behind the stripe but because of the stripe the number feature detection was not correct. The network also gave some probability to end of all speed and passing limit because the end of all speed and passing limit is just a stripe without any number with it.
+
+![alt text][image13]
+![alt text][image15]
+
+The elderly crossing sign is not classified properly at all. The network gave some probability to road narrows on right class as the structure in image has right curve which is narrowing down.
+
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 ####1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
 
+![alt text][image16]
+The first conv layer was able to detect edges in the image.
 
